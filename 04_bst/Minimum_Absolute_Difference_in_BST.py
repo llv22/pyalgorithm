@@ -56,10 +56,16 @@ class TreeNode:
         self.left = None
         self.right = None
 
+# Definition for a binary tree node.
+# class TreeNode:
+#     def __init__(self, x):
+#         self.val = x
+#         self.left = None
+#         self.right = None
+
 class Solution:
-    def getMinimumDifference(self, root):
+    def getMinimumDifferenceGeneric(self, root):
         """
-        Generic solution, even fit for non-BST
         :type root: TreeNode
         :rtype: int
         """
@@ -88,6 +94,24 @@ class Solution:
         if root.right:
             v1 = min(self.getMinimumDifference(root.right), v1)
         return v1
+    
+    
+    def getMinimumDifference(self, root):
+        """
+        For BST, just take nearest nodes of root in inorder traverse
+        :type root: TreeNode
+        :rtype: int
+        """
+        def inOrder(cur, preval):
+            diff = (1<<31)
+            if cur.left:
+                diff = min(diff, inOrder(cur.left, preval))
+            diff = min(diff, abs(cur.val - preval))
+            if cur.right:
+                diff = min(diff, inOrder(cur.right, cur.val))
+            return diff
+        
+        return inOrder(root, 0)
 # -
 
 def stringToTreeNode(input):
