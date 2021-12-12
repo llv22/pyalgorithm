@@ -5,8 +5,11 @@
 #
 
 # @lc code=start
+from typing import List
+
+
 class Solution:
     def intervalIntersection(self, firstList: List[List[int]], secondList: List[List[int]]) -> List[List[int]]:
-        
-# @lc code=end
+        pass
 
+# @lc code=end
