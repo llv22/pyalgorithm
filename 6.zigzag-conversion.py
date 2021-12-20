@@ -21,7 +21,7 @@ class Solution:
             i += step
         return ''.join(output)
     
-    def convert1(self, s: str, numRows: int) -> str:
+    def convert_full(self, s: str, numRows: int) -> str:
         if len(s) <= 1 or numRows == 1:
             return s
         output = [[] for _ in range(numRows)]
